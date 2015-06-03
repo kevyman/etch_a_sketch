@@ -1,3 +1,18 @@
 .black {
 	background-color: #fff;
 }
+
+.grey {
+	background-color: #ddd;
+}
+
+.square{
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	outline: #999 solid 1px;
+}
+
+#newEntry{
+	display: none;
+}
