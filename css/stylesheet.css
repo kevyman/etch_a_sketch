@@ -1,18 +1,37 @@
 .black {
-	background-color: #fff;
+	background-color: #000;
 }
 
-.grey {
+.gray{
 	background-color: #ddd;
 }
 
+
 .square{
-	margin: 0;
-	padding: 0;
+	/*margin: 0;
+	padding: 0;*/
 	display: inline-block;
-	outline: #999 solid 1px;
+	/*outline: #999 solid 1px;*/
 }
 
 #newEntry{
 	display: none;
+}
+
+#innerContainer {
+	line-height: 0;
+	width: 512px;
+	height: 512px;
+
+}
+
+#container{
+	float: right;
+	border: red solid 50px;
+	border-radius: 25px;
+
+}
+
+#toolbar{
+	float: left;
 }
