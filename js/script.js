@@ -1,20 +1,25 @@
 
 $(document).ready(function(){
 
-	var boxNum = 64;
+	var boxNum = 16;
 	var makeNew = $("#makeNew");
 	var newEntry = $("#newEntry");
 	var newSize = $("#newSize");
 	var innCon = $("#innerContainer");
+	var conWidth = innCon.width();
+	var conHeight = 512;
+
+
 
 	var fillGrid = function(input){
-		var size = 512/input;
+		var wid = conWidth/input;
+		var hi = conHeight/input;
 		innCon.empty();
 		for(i=0;i<(input*input);i++){
-			innCon.append("<div class='square gray' style='height: "+ size +"px; width:"+ size +"px;'></div>");
+			innCon.append("<div class='square gray' style='height: "+ hi +"px; width:"+ wid +"px;'></div>");
 		}
-		$(".square").hover(function(){
-			$(this).removeClass("gray").addClass("black");
+		$(".square").mouseover(function(){
+			$(this).css("background-color",'black');
 		});
 	};
 
@@ -27,6 +32,8 @@ $(document).ready(function(){
 		newEntry.fadeIn("slow", function(){
 			newSize.focus();
 		});
+		$("#toolbar").addClass("shadow");
+		innCon.removeClass("shadow");
 	});
 	// newSize.keyup(function(event){
 	// 	event.preventDefault();
@@ -37,15 +44,17 @@ $(document).ready(function(){
 	$("#finished").on("click", function(event){
 		event.preventDefault();
 		boxNum = newSize.val();
-		if($.isNumeric(boxNum) && boxNum > 0 && boxNum <= 10000){
+		if($.isNumeric(boxNum) && boxNum > 0 && boxNum <= 64){
 			fillGrid(boxNum);
 			newEntry.fadeOut("slow", function(){
 				makeNew.fadeIn();
 			});
 			$(".oops").remove();
+			$("#toolbar").removeClass("shadow");
+			innCon.addClass("shadow");
 		}
 		else{
-			newEntry.append("<p class='oops'>Oops! It really needs to be a number from 1 to 100.</p>");
+			newEntry.append("<p class='oops'><strong>Oops! It really needs to be a number from 1 to 64.</strong></p>");
 			newSize.val("");
 			newSize.focus();
 		}
